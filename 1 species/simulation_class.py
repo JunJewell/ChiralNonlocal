@@ -266,7 +266,7 @@ class nonlocal_react_advect_diffuse_system():
         distance_from_centre[number_of_points_per_radius, number_of_points_per_radius] = -1
         
         kernel_x = ((np.cos(self.angle)*x/distance_from_centre) - (np.sin(self.angle)*y/distance_from_centre)) * (distance_from_centre/self.xi) * (np.exp( -0.5*(distance_from_centre/self.xi)**2 ))
-        kernel_y = ((np.cos(self.angle)*y/distance_from_centre) +(np.sin(self.angle)*x/distance_from_centre)) * (np.exp( -0.5*(distance_from_centre/self.xi)**2 ))
+        kernel_y = ((np.cos(self.angle)*y/distance_from_centre) +(np.sin(self.angle)*x/distance_from_centre)) * (distance_from_centre/self.xi) *(np.exp( -0.5*(distance_from_centre/self.xi)**2 ))
 
         kernel_x[ np.where(distance_from_centre>radius_length) ] = 0
         kernel_y[ np.where(distance_from_centre>radius_length) ] = 0
