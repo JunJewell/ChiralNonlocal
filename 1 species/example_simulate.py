@@ -52,7 +52,7 @@ system = nonlocal_react_advect_diffuse_system(U, angle, rho, xi, mu, L_x, L_y, k
 
 # Running simulation, checking and saving progress
 print("Beginning simulation")
-solution = system.simulate_with_progress("data_u.csv" , "data_t.csv")
+solution = system.simulate_with_progress("%s/data_u.csv" %folder_tag , "%s/data_t.csv" %folder_tag)
 
 
 # Plotting data
