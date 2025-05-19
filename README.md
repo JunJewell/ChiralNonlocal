@@ -24,7 +24,7 @@ To run a simulation we create an instance of one of the daughter classes, inputt
 * `dispersion_relation.py`, defines a class which takes inputs of model parameters, and has a method which takes the wavenumber, $k$, as input and outputs the corresponding linear growth rate, $\lambda$, according to the dispersion relation we derive from linear stability analysis. The `__main__' of this file also plots the graphs we used to display these dispersion relations in the paper.
 * `plot_class.py` defines a class which takes in simulation data and has methods to plot and save graphs, including density heatmaps, dispersion relations, animations of evolving density heatmaps, and more!
 * `matplotlib_style.py` defines the style and format of our graphs.
-* 
+  
 ### Execution
 * `simulate_chiral_directsensing_packing_NAD.py` shows an example of using the classes to simulate a chiral, direct sensing, volume-filling, nonlocal advection-diffusion system.
 * `simulate_chiral_gradientsensing_packing_NAD.py` shows an example of using the classes to simulate a chiral, gradient sensing, volume-filling, nonlocal advection-diffusion system.
