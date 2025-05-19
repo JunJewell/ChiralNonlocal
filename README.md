@@ -1,11 +1,12 @@
 # ChiralNonlocal
-Code to simulat two species 2D nonlocal reaction-advection-diffusion system, with chiral movement. See the paper [[here]] for details of the model and theory. Videos showing examples of these simulations are also included.
+Code to simulate two species 2D nonlocal reaction-advection-diffusion system, with chiral movement. See the paper [[here]] for details of the model and theory. Videos showing examples of these simulations are also included.
 
 ## Videos
 The 'Videos' folder contains videos of the evolving density heatmaps corresponding to figures in the paper. Each video shows: 
 * On the left, the density of both species superimposed, using the colourmap shown in "colour_map.pdf".
 * In the centre, only the density of the chaser species, $c$, with the colour normalised for visiblity to show the maximum and minimum density at each individual time point
 * On the right, only the density of the runner species, $\rho$, again with the colour normalised for visiblity to show the maximum and minimum density at each individual time point
+
 Note that the simulation time is not always shown at a constant speed during the video, however, the simulation time is always shown on the "Time=" label at the top centre of the video.
 
 Videos are named after the corresponding Figures in the paper which show a snapshot of the same simulation. Fig. 4 e and f compare oscillations driven by parallel chase-and-run to a steady-state driven by chiral chase-and-run, respectively. Fig. 5 shows a simulation in which linear theory predicts oscillations which only oscillates at early time before settling to a steady-state. Fig. 6 shows examples of species mixing and separation at early and late times. Fig. 7 shows examples where the cross-species interaction is zero and thus the species are only coupled through volume-filling. Fig. 8 shows, for different values of the chiral running angle, examples of `population chase-and-run' dynamics, where an aggregate of chasers continually pursues an aggregate of runners.
