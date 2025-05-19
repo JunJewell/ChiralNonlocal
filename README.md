@@ -13,8 +13,10 @@ Videos are named after the corresponding Figures in the paper which show a snaps
 
 
 ## Code Structure
+### Essential Files
 * `simulation_class.py` file, defining a class which takes inputs of model and simulation parameters, and has `simulate` and `simulate_with_progress` methods to output numerical solutions of the integro-PDEs that define the model. The latter method also periodically saves the solution data to csv files. See "Numerical Integration" below for details of the simulation method.
 * `dispersion_relation.py` file, defining a class which takes inputs of model parameters, and has a method which takes the wavenumber, $k$, as input and outputs the corresponding linear growth rate, $\lambda$, according to the dispersion relation we derive from linear stability analysis.
+### Extra Files
 * `plot_class.py` file, defining a class which takes in solution data and has methods to plot and save graphs, including density heatmaps, dispersion relations, and animations of evolving density heatmaps.
 * `example_simulate.py` file, showing an example of using the above classes to perform simulations and plot results.
 * `example_read_data_and_plot.py` file, showing an example of reading in solution data and plotting the results.
