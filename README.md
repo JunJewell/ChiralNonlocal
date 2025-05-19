@@ -1,36 +1,54 @@
 # ChiralNonlocal
-Code to simulate two species 2D nonlocal reaction-advection-diffusion system with chiral movement. See the paper [[here]] for details of the model and theory. Videos showing examples of these simulations are also included.
+
+Code to simulate a two-species 2D nonlocal reaction–advection–diffusion system with chiral movement. See the paper [[here]] for details of the model and theory. Videos showing example simulations are also included.
+
+---
 
 ## Videos
-The 'Videos' folder contains videos of the evolving density heatmaps corresponding to figures in the paper. Each video shows: 
-* On the left, the density of both species superimposed, using the colourmap shown in "colour_map.pdf".
-* In the centre, only the density of the chaser species, $c$, with the colour normalised for visiblity to show the maximum and minimum density at each individual time point
-* On the right, only the density of the runner species, $\rho$, again with the colour normalised for visiblity to show the maximum and minimum density at each individual time point
 
-Note that the simulation time is not always shown at a constant speed during the video, however, the simulation time is always shown on the "Time=" label at the top centre of the video.
+The `Videos` folder contains animations of evolving density heatmaps corresponding to figures in the paper. Each video shows:
 
-Videos are named after the corresponding Figures in the paper which show a snapshot of the same simulation. Fig. 4 e and f compare oscillations driven by parallel chase-and-run to a steady-state driven by chiral chase-and-run, respectively. Fig. 5 shows a simulation in which linear theory predicts oscillations which only oscillates at early time before settling to a steady-state. Fig. 6 shows examples of species mixing and separation at early and late times. Fig. 7 shows examples where the cross-species interaction is zero and thus the species are only coupled through volume-filling. Fig. 8 shows, for different values of the chiral running angle, examples of `population chase-and-run' dynamics, where an aggregate of chasers continually pursues an aggregate of runners. Fig 9. a and b shows examples of the travelling holes phenomenon, without and with chirality, respectively.
+- **Left**: The densities of both species superimposed, using the colourmap shown in `colour_map.pdf`.
+- **Centre**: The density of the chaser species, $c$, normalised to show the minimum and maximum density at each time point.
+- **Right**: The density of the runner species, $\rho$, again normalised for visibility.
 
+Note that video playback speed may vary, but simulation time is always shown at the top centre as `"Time="`.
+
+Videos are named after the corresponding figures in the paper. For example:
+- **Fig. 4e,f**: Comparison of oscillations (parallel chase-and-run) vs steady state (chiral chase-and-run).
+- **Fig. 5**: Simulation where linear theory predicts early-time oscillations but these later settle to a steady state.
+- **Fig. 6**: Species mixing and separation at early and late times.
+- **Fig. 7**: Dynamics with no cross-species interaction, meaning that the species are only coupled via volume-filling.
+- **Fig. 8**: Population chase-and-run dynamics for different chiral running angles.
+- **Fig. 9a,b**: Travelling holes, without and with chirality, respectively.
+
+---
 
 ## Code Structure
-### Simulation
-* `parent_simulation_class.py`, defines an abstract parent class used for simulating general systems with nonlocality, diffusion, and/or advection on a 2D, rectangular, periodic, domain. In its daughter classes, we specify further details of the system, such as chirality, direct vs gradient sensing, and the specific form of the governing equations.
-* `chiral_directsensing_packing_NAD_class.py`, defines the daughter class specifically for simulating systems with chirality, direct sensing, and volume-filling.
-* `chiral_gradientsensing_packing_NAD_class.py`, defines the daughter class specifically for simulating systems with chirality, gradient sensing, and volume-filling.
 
-To run a simulation we create an instance of one of the daughter classes, inputting the model and simulation parameters, and then call either the `simulate` or `simulate_with_progress` methods. The latter method periodically saves the solution data to csv files. See "Numerical Integration" below for details of the simulation method. 
+### Simulation
+
+- `parent_simulation_class.py`: Abstract base class for simulating systems with nonlocality, diffusion, and/or advection on a 2D periodic domain. Daughter classes define specifics such as chirality, sensing mode, and governing equations.
+- `chiral_directsensing_packing_NAD_class.py`: Daughter class for chiral, direct sensing, volume-filling systems.
+- `chiral_gradientsensing_packing_NAD_class.py`: Daughter class for chiral, gradient sensing, volume-filling systems.
+
+To run a simulation, create an instance of one of the daughter classes with the desired parameters, and call either `simulate` or `simulate_with_progress` (which saves results to CSV). See the **Numerical Integration** section below for method details.
 
 ### Visualisation
-* `dispersion_relation.py`, defines a class which takes inputs of model parameters, and has a method which takes the wavenumber, $k$, as input and outputs the corresponding linear growth rate, $\lambda$, according to the dispersion relation we derive from linear stability analysis. The `__main__' of this file also plots the graphs we used to display these dispersion relations in the paper.
-* `plot_class.py` defines a class which takes in simulation data and has methods to plot and save graphs, including density heatmaps, dispersion relations, animations of evolving density heatmaps, and more!
-* `matplotlib_style.py` defines the style and format of our graphs.
-  
-### Execution
-* `simulate_chiral_directsensing_packing_NAD.py` shows an example of using the classes to simulate a chiral, direct sensing, volume-filling, nonlocal advection-diffusion system.
-* `simulate_chiral_gradientsensing_packing_NAD.py` shows an example of using the classes to simulate a chiral, gradient sensing, volume-filling, nonlocal advection-diffusion system.
-* `read_data_and_plot.py` shows an example of using the classes to read in simulation data and plot results.
-* `read_and_simulate_further.py` shows an example of reading in simulation data, and simulating this system to a even later time.
-* `concatenate_data.py` concatenates multiple sets of simulation data of density of both species and time. Used when you have simulated a system and later simulated it again to a further time, and you need to combine the multiple data files from each session of simulation.
+
+- `dispersion_relation.py`: Computes and plots dispersion relations derived from linear stability analysis.
+- `plot_class.py`: Provides methods to visualise and save simulation results, including heatmaps and animations.
+- `matplotlib_style.py`: Defines consistent plotting style.
+
+### Execution Examples
+
+- `simulate_chiral_directsensing_packing_NAD.py`: Example script for chiral direct sensing systems.
+- `simulate_chiral_gradientsensing_packing_NAD.py`: Example for chiral gradient sensing systems.
+- `read_data_and_plot.py`: Reads simulation data and generates plots.
+- `read_and_simulate_further.py`: Continues a simulation from saved data.
+- `concatenate_data.py`: Combines multiple simulation output files for simulations that were continued from saved data.
+
+---
 
 
 ## Numerical Integration
