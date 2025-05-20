@@ -52,6 +52,8 @@ To run a simulation, create an instance of one of the daughter classes with the 
 
 
 ## Numerical Integration
-Numerical integration of integro-PDEs. such as
-$$\frac{\partial u}{\partial t} = \nabla^2 u -\boldsymbol{\nabla}\cdot\left(u(1-u)\frac{\mu}{\xi^{2}} \int\int\boldsymbol{\hat{s}}\tilde{\Omega}\left(\frac{s}{\xi}\right)u(\boldsymbol{x}+\boldsymbol{s},t) d s_x d s_y\right),$$
-and its 2 species and chiral equivalents, is carried out using the method-of-lines, first discretising in space and then integrating the resulting ODEs with backwards differentiation formulae. The latter is implemented through SciPy's `integrate.solve_ivp` function - see [here](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) for details. For diffusion and advection terms, standard centred stencils are used throughout. Chirality is included simply by rotating the vector of advection using a matrix multiplication. The integral term is calculated using a fast Fourier transform method. Further detail can be found [in this repository](https://github.com/JunJewell/NonlocalReactAdvectDiffuse2D), which uses the same underlying method.
+Numerical integration of integro-PDEs, such as
+
+$$\frac{\partial u}{\partial t} = \nabla^2 u -\boldsymbol{\nabla}\cdot\left(u(1-u)\frac{\mu}{\xi} \boldsymbol{\underline{\underline{R}}}(\alpha)\boldsymbol{\nabla}\int\int\tilde{\Omega}\left(\frac{s}{\xi}\right)u(\boldsymbol{x}+\boldsymbol{s},t) d s_x d s_y\right),$$
+
+and its two species and direct sensing equivalents, is carried out using the method-of-lines, first discretising in space and then integrating the resulting ODEs with backwards differentiation formulae. The latter is implemented through SciPy's `integrate.solve_ivp` function - see [here](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) for details. For diffusion and advection terms, standard centred stencils are used throughout. Chirality is included simply by rotating the vector of advection using a matrix multiplication. The integral term is calculated using a fast Fourier transform method. Further detail can be found [in this repository](https://github.com/JunJewell/NonlocalReactAdvectDiffuse2D), which uses the same underlying method.
