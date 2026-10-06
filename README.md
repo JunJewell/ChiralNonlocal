@@ -1,6 +1,6 @@
 # ChiralNonlocal
 
-Code to simulate a two-species 2D nonlocal reaction–advection–diffusion system with chiral movement. See the paper [[here]] for details of the model and theory. Videos showing example simulations are also included.
+Code to simulate a two-species 2D nonlocal reaction–advection–diffusion system with chiral movement. See the paper [here](https://doi.org/10.1007/s11538-025-01539-6) for details of the model and theory. Videos showing example simulations are also included.
 
 ---
 
